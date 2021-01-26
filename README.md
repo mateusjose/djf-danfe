@@ -17,7 +17,7 @@ npm install https://github.com/mateusjose/djf-danfe
 
 ```
 const Danfe = require('djf-danfe')
-var danfe = Danfe.fromXML('conteudo XML')
+var danfe = Danfe.fromXML('conteudo XML', 'url logo')
 console.log(danfe.toHtml())
 ```
 
