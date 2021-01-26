@@ -273,12 +273,12 @@ function observacoes (nfe) {
  * @param      {object}  data
  * @return     {string}
  */
-function renderHtml (data) {
+function renderHtml (data, logo = "") {
   if (!data) {
     return ''
   }
   var template = fs.readFileSync(TEMPLATE_DANFE, 'utf8')
-  return handlebars.compile(template)(data)
+  return handlebars.compile(template)({...data, emitente: {...data.emitente, logo}})
 }
 
 /**
@@ -357,9 +357,9 @@ function getTemplateData (nfe) {
  * @param      {<type>}  nfe     djf-nfe
  * @return     {Object}  { description_of_the_return_value }
  */
-function model (nfe) {
+function model (nfe, logo = "") {
   return {
-    toHtml: () => renderHtml(getTemplateData(nfe))
+    toHtml: () => renderHtml(getTemplateData(nfe), logo)
   }
 }
 
@@ -369,11 +369,11 @@ function model (nfe) {
  * @param      {object}  nfe    djf-nfe
  * @return     {<object>}
  */
-module.exports.fromNFe = function (nfe) {
+module.exports.fromNFe = function (nfe, logo = "") {
   if (!nfe || typeof nfe.nrNota !== 'function') {
     return model(null)
   }
-  return model(nfe)
+  return model(nfe, logo)
 }
 
 /**
@@ -382,11 +382,11 @@ module.exports.fromNFe = function (nfe) {
  * @param      {string}  xml
  * @return     {<object>}
  */
-module.exports.fromXML = function (xml) {
+module.exports.fromXML = function (xml, logo = "") {
   if (!xml || typeof xml !== 'string') {
     return model(null)
   }
-  return model(NFe(xml))
+  return model(NFe(xml), logo)
 }
 
 /**
