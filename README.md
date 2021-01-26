@@ -1,6 +1,4 @@
 # djf-danfe
-[![Build Status](https://travis-ci.org/djalmaoliveira/djf-danfe.svg?branch=master)](https://travis-ci.org/djalmaoliveira/djf-danfe) ![Version](https://img.shields.io/npm/v/djf-danfe.svg)
-
 Visualizador de DANFE (Documento Auxiliar Da Nota Fiscal Eletrônica) em html.
 
 ## Preparação
@@ -12,7 +10,7 @@ NodeJS 8.x
 ### Instalação
 
 ```
-npm install djf-danfe
+npm install https://github.com/mateusjose/djf-danfe
 ```
 
 ### Exemplos
@@ -22,8 +20,6 @@ const Danfe = require('djf-danfe')
 var danfe = Danfe.fromXML('conteudo XML')
 console.log(danfe.toHtml())
 ```
-
-[Outros exemplos de uso](https://github.com/djalmaoliveira/djf-danfe/tree/master/test/index.js)
 
 
 ## Especificações
